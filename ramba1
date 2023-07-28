@@ -1,0 +1,48 @@
+mport React from 'react';
+import { some ,all,none,filter,reject,find,partition,find, scan} from 'ramda'; // Import the specific function from Ramda
+
+function App() {
+  const numbers = [1, 2, 3, 4, 5];
+  const isEven = x => x % 2 === 0;
+
+  const hasEvenNumber = some(isEven, numbers);
+
+  const allEvenNumbers = R.all(isEven, numbers);
+
+  const noEvenNumbers = R.none(isEven, numbers);
+
+  const evenNumbers = R.filter(isEven, numbers);
+
+
+  const oddNumbers = R.reject(isEven, numbers);
+
+  const firstEvenNumber = R.find(isEven, numbers);
+
+
+  const [evenNumbers, oddNumbers] = R.partition(isEven, numbers);
+
+  const students = [
+    { name: 'Alice', age: 25 },
+    { name: 'Bob', age: 30 },
+    { name: 'Charlie', age: 28 }
+  ];
+
+  const names = R.pluck('name', students);
+
+  
+  return (
+    <div>
+      {hasEvenNumber.toString()} {/* Convert boolean to string for rendering */}
+      {allEvenNumbers.toString()}
+      {noEvenNumbers.toString()}
+      {evenNumbers.toString()}
+      {oddNumbers.toString()}
+      {firstEvenNumber.toString()}
+
+
+
+    </div>
+  );
+}
+
+export default App;
