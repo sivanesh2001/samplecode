@@ -1,0 +1,38 @@
+import React from 'react';
+
+function App() {
+  const fruits = ['Apple', 'Banana', 'Orange', 'Grapes'];
+
+  const fruitList = fruits.map((fruit, index) => <li key={index}>{fruit}</li>);
+  const studentGrades = {
+    Alice: 90,
+    Bob: 85,
+    Charlie: 95,
+    David: 78,
+  };
+  const studentNames = Object.keys(studentGrades);
+  const gradeList = studentNames.map((studentName, index) => (
+    <li key={index}>
+      {studentName}: {studentGrades[studentName]}
+    </li>
+  ));
+  const originalString = 'Hello, World!';
+  const mappedString = originalString.replace('o', 'X');
+
+  
+
+
+  return (
+    <div>
+      <ul>
+        {fruitList}
+      </ul>
+      <ul>
+        {gradeList}
+      </ul>
+      {mappedString}
+    </div>
+  );
+}
+
+export default App;
