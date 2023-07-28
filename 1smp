@@ -1,0 +1,56 @@
+import React from 'react';
+import _ from 'lodash';
+import { compose, pipe } from 'lodash/fp';
+
+function intersperse(arr, sep) {
+  return arr.flatMap((item, index) => (index !== arr.length - 1 ? [item, sep] : [item]));
+}
+
+function MyComponent() {
+  const add = (a, b) => a + b;
+  const double = (num) => num * 2;
+  const square = (num) => num * num;
+
+  const calculateResult = pipe(add, double, double);
+  const calculateResults = compose(add, double, double);
+
+  return (
+    <div>
+      <div>{`pipe = ${calculateResult(3, 5)}`}</div>
+      <div>{`compose = ${calculateResults(3, 5)}`}</div>
+    </div>
+  );
+}
+
+function App() {
+  const array1 = [1, 2, 3];
+  const array2 = ['A', 'B', 'C'];
+  const zipped = _.zip(array1, array2);
+  const interspersed = intersperse(array1, 'X');
+  const arr = [1, 2, 4, 5];
+  arr.splice(2, 0, 3); // Insert 3 at index 2
+
+  const originalArray = [1, 2, 3, 4, 5];
+  const interspersedArray = intersperse(originalArray, 'X');
+
+  const nestedArray = [1, [2, [3, 4]], 5, [6]];
+  const flattenedArray = nestedArray.flat(Infinity);
+
+
+
+
+
+
+  return (
+    <div>
+      <MyComponent />
+      <div>zipped: {JSON.stringify(zipped)}</div>
+      <div>interspersed: {JSON.stringify(interspersed)}</div>
+      <div>splice: {JSON.stringify(arr)}</div>
+      <div>intersperse: {JSON.stringify(interspersedArray)}</div>
+      <div>flattenedArray: {JSON.stringify(flattenedArray)}</div>
+    </div>
+  );
+}
+
+export default App;
